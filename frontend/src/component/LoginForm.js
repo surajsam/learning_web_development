@@ -1,19 +1,15 @@
-import React from 'react'
+import React from 'react';
+import TextField from './textField'
+import Button from "./button";
 
 class LoginForm extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userName : '' ,
             password : '' ,
-            message : ''
+            message : '' ,
+            userName : ''
         }
-    }
-
-    userNameHandler = event => {
-        this.setState({
-            userName: event.target.value
-        })
     }
 
     passwordHandler = event => {
@@ -21,6 +17,13 @@ class LoginForm extends React.Component {
             password: event.target.value
         })
     }
+
+    userHandler = event =>  {
+        this.setState(
+            {userName : event.target.value}
+        )
+    }
+
 
     loginHandler = event => {
         event.preventDefault();
@@ -43,22 +46,13 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.loginHandler}>
-                <div>
-                    <input id={'userName'} type={'text'} value={this.state.userName} onChange={this.userNameHandler}/>
-                </div>
-                <div>
-                    <input id={'password'} type={'password'} value={this.state.password} onChange={this.passwordHandler}/>
-                </div>
-                <div>
-                    <button id={'submitButton'} type={'submit'} onChange={this.loginHandler}>Login</button>
-                    <div>
-                        <p> {this.state.message} </p>
-                    </div>
-                </div>
-            </form>
+            <div className={'LoginForm'}>
+                <TextField id={'username'} type={'text'} value={this.state.userName} onChange={this.userHandler}/>
+                <TextField id={'password'} type={'password'} value={this.state.password} onChange={this.passwordHandler}/>
+                <Button  type={'submit'} onClick={this.loginHandler}/>
+                <p> {this.state.message} </p>
+            </div>
         )
-
     }
 }
 

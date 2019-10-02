@@ -36,10 +36,6 @@ public class RestControllerApi {
     public boolean validateUser(@RequestBody Customer customer){
         List<Customer> customers = repo.findAll();
         for (Customer varCustomer : customers) {
-            System.out.println(varCustomer.userName);
-            System.out.println(varCustomer.password);
-            System.out.println(customer.userName);
-            System.out.println(customer.password);
             if (varCustomer.userName.equals(customer.userName)
                     && varCustomer.password.equals(customer.password)) {
                 return true;

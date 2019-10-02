@@ -1,5 +1,5 @@
 import React from 'react';
-import LoginForm from "./LoginForm";
+import LoginForm from "./component/LoginForm";
 
 class App  extends React.Component{
     constructor(props) {
